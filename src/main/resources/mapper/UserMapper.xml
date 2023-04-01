@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo_openapi.mapper.UserMapper">
+    <select id="selectById" resultType="com.example.demo_openapi.model.Users">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+
+    <insert id="insLoginProvide" parameterType="com.example.demo_openapi.model.AuthLogin">
+        insert into oauth_logins (user_id, provider, provider_id, provider_token, created_at, updated_at)
+        values (user_id, provider, provider_id, provider_token, now(), now());
+    </insert>
+</mapper>
